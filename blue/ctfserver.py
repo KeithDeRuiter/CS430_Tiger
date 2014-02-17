@@ -2,6 +2,10 @@ from socket import *      #import the socket library
 import os.path
 import time
 
+import polygram
+import homo
+import cipher
+
 HOST = ""   #we are the host
 PORT = 16003    #arbitrary port not currently in use
 ADDR = (HOST,PORT)    #we need a tuple for the address
@@ -28,20 +32,20 @@ while(true):
 	if(ciphertype == "a"):
 		choice = "a"
 		conn.send(choice)
-		crypt = #FILL IN THIS WITH CLASS NAME
+		crypt = Alphabetic(1)
 		break
 
 	else if(ciphertype == "b"):
 		maplen = input("How many maps to use: ")
 		choice = "b " + maplen
 		conn.send(choice)
-		crypt = #FILL IN THIS WITH CLASS NAME
+		crypt = Alphabetic(maplen)
 		break
 
 	else if(ciphertype == "c"):
 		choice = "c"
 		conn.send(choice)
-		crypt = #FILL IN THIS WITH CLASS NAME
+		crypt = Homophonic()
 		break
 
 	else if(ciphertype == "d"):
@@ -65,7 +69,7 @@ with open("messages.txt") as f: #Opens file and goes through every line. Appends
 		time.sleep(60)
 
 #Tells receiver that all messages sent?
-done = "abcdefghijklmnopqrstuvwxyz.,!? " #Random message to send
+done = "bac.,!? " #Random message to send
 conn.send(done)
 
 conn.close()

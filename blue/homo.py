@@ -6,7 +6,7 @@ class Homophonic:
 	alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','!','?']
 	homophonic = []
 
-	def __init__(self, blocklen):
+	def __init__(self):
 		global homophonic
 		#list used to encrypt and decrypt, each character maps to 100 different numbers
 		homophonic = list(range(1000, 10000))

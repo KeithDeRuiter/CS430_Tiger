@@ -1,6 +1,10 @@
 from socket import *
 import sys
 
+import polygram
+import homo
+import cipher
+
 name="localhost" #Change to client for test on deterlab
 HOST = name
 PORT = 16003
@@ -14,13 +18,13 @@ cli.connect((ADDR))
 data = cli.recv(BUFSIZE)
 dataSplit = data.split()
 if(dataSplit[0] == "a")
-	crypt = #FILL IN THIS WITH CLASS NAME
+	crypt = Alphabetic(1)
 
 else if(dataSplit[0] == "b")
-	crypt = #FILL IN THIS WITH CLASS NAME
+	crypt = Alphabetic(dataSplit[1])
 	
 else if(dataSplit[0] == "c")
-	crypt = #FILL IN THIS WITH CLASS NAME
+	crypt = Homophonic()
 	
 else if(dataSplit[0] == "d")
 	crypt = Polygram(dataSplit[1])
@@ -31,7 +35,7 @@ f = file("log.txt","w+")
 while(True):
 	data = cli.recv(BUFSIZE) #Receive the message from server
 
-	if(data == "abcdefghijklmnopqrstuvwxyz.,!? ") #Checks for end of messages, if so break out of while
+	if(data == "bac.,!? ") #Checks for end of messages, if so break out of while
 		break
 
 	#f.write(data+"\n")
