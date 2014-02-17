@@ -1,37 +1,5 @@
 from socket import *
 import sys
-
-dic={
-      	 'a':'.',
-	     'b':'y',
-	     'c':'r',
-	     'd':'a',
-	     'e':'!',
-	     'f':'t',
-	     'g':'h',
-	     'h':'g',
-	     'i':'?',
-	     'j':'q',
-	     'k':'o',
-	     'l':'v',
-	     'm':'p',
-	     'n':'c',
-	     'o':'x',
-	     'p':'d',
-	     'q':'s',
-	     't':'k',
-	     'r':'i',
-	     's':'w',
-	     'u':'z',
-	     'v':' ',
-	     'w':'l',
-	     'x':'m',
-	     'y':'u',
-	     'z':'n',
-	     '.':'e',
-	     '!':'j',
-	     '?':'f',
-	     ' ':'b'};
 	
 #if(len(sys.argv)!=2):
  #   print ("Please include server name")

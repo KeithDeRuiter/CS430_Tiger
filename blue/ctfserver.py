@@ -2,40 +2,6 @@ from socket import *      #import the socket library
 import os.path
 import time
 
-
-dic={
-      	 'a':'.',
-	     'b':'y',
-	     'c':'r',
-	     'd':'a',
-	     'e':'!',
-	     'f':'t',
-	     'g':'h',
-	     'h':'g',
-	     'i':'?',
-	     'j':'q',
-	     'k':'o',
-	     'l':'v',
-	     'm':'p',
-	     'n':'c',
-	     'o':'x',
-	     'p':'d',
-	     'q':'s',
-	     't':'k',
-	     'r':'i',
-	     's':'w',
-	     'u':'z',
-	     'v':' ',
-	     'w':'l',
-	     'x':'m',
-	     'y':'u',
-	     'z':'n',
-	     '.':'e',
-	     '!':'j',
-	     '?':'f',
-	     ' ':'b'};
-
-
 HOST = ""   #we are the host
 PORT = 16003    #arbitrary port not currently in use
 ADDR = (HOST,PORT)    #we need a tuple for the address
@@ -53,20 +19,49 @@ print ("listening...")
 request=0
 conn,addr = serv.accept() #accept the connection
 print ("...connected!")
-f=open("messages.txt")
-while(True): 
-   # if(os.path.isfile("/tmp"+str(request)+)!=True):
-    #        conn.send(" File Not Found".encode('utf-8'))
-     #       continue
-    text=f.readline()
-    message=""
-    for letter in text:
-	        if(letter=='\n'):
-		   break
-		message=message+str((dic[letter]))
-    conn.send(message.encode('utf-8'))
-    request=request+1
-    if(request==10):
-	break
-    time.sleep(5)
+
+
+#Setup which cipher type and additional info needed
+while(true):
+	#Choose cipher type
+	ciphertype = input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram :")
+	if(ciphertype == "a"):
+		choice = "a " + 1
+		conn.send(choice)
+		crypt = #FILL IN THIS WITH CLASS NAME
+		break
+
+	else if(ciphertype == "b"):
+		maplen = input("How many maps to use: ")
+		choice = "b " + maplen
+		conn.send(choice)
+		crypt = #FILL IN THIS WITH CLASS NAME
+		break
+
+	else if(ciphertype == "c"):
+		choice = "c"
+		conn.send(choice)
+		crypt = #FILL IN THIS WITH CLASS NAME
+		break
+
+	else if(ciphertype == "d"):
+		blocklen = input("How long of a block: ")
+		choice = "d " + blocklen
+		conn.send(choice)
+		crypt = Polygram(blocklen)
+		break
+
+	else
+		print("Not a valid choice. ")
+
+count = 0
+
+with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
+    for line in f:
+    	count += 1
+		message = crypt.encrypt(line)
+		message = count + message
+		conn.send(message.encode('utf-8'))
+		time.sleep(60)
+
 conn.close()
