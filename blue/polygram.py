@@ -1,30 +1,31 @@
 import itertools
 import random
+import sys
 
-DIC = []
-SCRAMBLE = []
-CIPHERLEN = 3
+class Polygram():
+	DIC = []
+	SCRAMBLE = []
+	CIPHERLEN = 1
 
-def encrypt(CHUNK):
-	global DIC, SCRAMBLE
-	LOC = DIC.index(CHUNK)
-	return SCRAMBLE[LOC]
+	def __init__(self, blocklen):
+		global CIPHERLEN, DIC, SCRAMBLE
+		CIPHERLEN = blocklen
+		DIC = [''.join(i) for i in itertools.product("abcdefghijklmnopqrstuvwxyz.,!? ", repeat=CIPHERLEN)]
+		SCRAMBLE = []
+		SCRAMBLE.extend(DIC)
+		random.seed(1337)
+		random.shuffle(SCRAMBLE)
 
-def decrypt(CHUNK):
-	global DIC, SCRAMBLE
-	LOC = SCRAMBLE.index(CHUNK)
-	return DIC[LOC]
+	def encrypt(self, CHUNK):
+		LOC = DIC.index(CHUNK)
+		return SCRAMBLE[LOC]
 
-def setup():
-	global DIC
-	DIC = [''.join(i) for i in itertools.product("abcdefghijklmnopqrstuvwxyz.,!? ", repeat=CIPHERLEN)]
-	SCRAMBLE.extend(DIC)
-	random.seed(1337)
-	random.shuffle(SCRAMBLE)
+	def decrypt(self, CHUNK):
+		LOC = SCRAMBLE.index(CHUNK)
+		return DIC[LOC]
 
-setup()
-print(DIC)
-test = encrypt("abc")
-print(test)
-back = decrypt(test)
-print(back)
+test = Polygram(3)
+crypted = test.encrypt("abc")
+decrypted = test.decrypt(crypted)
+print(test.encrypt("abc"))
+print(decrypted)
