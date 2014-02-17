@@ -1,0 +1,16 @@
+set ns [new Simulator]
+source tb_compat.tcl
+
+#Nodes
+set client [$ns node]
+tb-set-node-os $client Ubuntu1204-64-STD
+set server [$ns node]
+tb-set-node-os $server Ubuntu1204-64-STD
+set mitm [$ns node]
+tb-set-node-os $mitm Ubuntu1204-64-STD
+
+set link0 [$ns duplex-link $client $mitm 100000.0kb 0.0ms DropTail]
+set link1 [$ns duplex-link $mitm $server 100000.0kb 0.0ms DropTail]
+
+$ns rtproto Static
+$ns run
