@@ -25,8 +25,8 @@ class Alphabetic:
 		t = 0
 		#encrypts message polyalphabetically (doing it monoalphabetically just means you dont increment t)
 		for letter in message:
-		  encrypted+=(keyList[t][alphabet.index(letter)])
-		  t = t + 1
+			encrypted+=(keyList[t][alphabet.index(letter)])
+			t = t + 1
 		print(encrypted)
 
 	def decrypt(self, thing):
@@ -34,6 +34,6 @@ class Alphabetic:
 		decrypted = ""
 		t = 0
 		for letter in encrypted:
-		  decrypted+=alphabet[keyList[t].index(letter)]
-		  t = t + 1
+			decrypted+=alphabet[keyList[t].index(letter)]
+			t = t + 1
 		print(decrypted)

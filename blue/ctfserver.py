@@ -61,8 +61,8 @@ while(true):
 count = 0
 
 with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
-    for line in f:
-    	count += 1
+	for line in f:
+		count += 1
 		message = crypt.encrypt(str(line))
 		message = count + message
 		conn.send(message.encode('utf-8'))

@@ -29,5 +29,5 @@ class Homophonic:
 		#decrypts by seeing what 4 digit number maps to what character
 		for x in xrange(0, len(message)/4):
 			temp = thing[x*4:x*4+4]	
-		    message = message + alphabet[(thing.index(int(temp))/100)]
+			message = message + alphabet[(thing.index(int(temp))/100)]
 		return message
