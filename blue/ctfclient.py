@@ -38,7 +38,13 @@ while(True):
 	data = str(data)
 	data = data[1:] #Strip order number from string. Discard it for now?
 	s = crypt.decrypt(data) #Decrypt the message
-	f.write(s+"\n") #Write decrypted message to log.txt
+	
+	#Strip spaces from end of message in case of polygram
+	if(dataSplit[0] == "d")
+		s.strip()	
+
+	#Write decrypted message to log.txt
+	f.write(s + "\n")
 
 cli.close()
 f.close()

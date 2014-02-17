@@ -2,7 +2,7 @@ import itertools
 import random
 import sys
 
-class Polygram():
+class Polygram:
 	DIC = []
 	SCRAMBLE = []
 	CIPHERLEN = 1
@@ -25,10 +25,10 @@ class Polygram():
 		message = splitter(CHUNK, CIPHERLEN)
 
 		#Make sure last block is 3 length or append spaces to make it so
-		if(len(message[len(message)-1]) == 1):
-			message[len(message)-1] = message[len(message)-1] + "  "
-		else if(len(message[len(message)-1]) == 2)
-			message[len(message)-1] = message[len(message)-1] + " "
+		if(len(message[-1]) == 1):
+			message[-1] = message[-1] + "  "
+		else if( len(message[-1]) == 2)
+			message[-1] = message[-1] + " "
 
 		#Encrypt each block
 		messageCrypt = ""
