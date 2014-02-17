@@ -26,7 +26,7 @@ while(true):
 	#Choose cipher type
 	ciphertype = input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram :")
 	if(ciphertype == "a"):
-		choice = "a " + 1
+		choice = "a"
 		conn.send(choice)
 		crypt = #FILL IN THIS WITH CLASS NAME
 		break
@@ -59,9 +59,13 @@ count = 0
 with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
     for line in f:
     	count += 1
-		message = crypt.encrypt(line)
+		message = crypt.encrypt(str(line))
 		message = count + message
 		conn.send(message.encode('utf-8'))
 		time.sleep(60)
+
+#Tells receiver that all messages sent?
+done = "abcdefghijklmnopqrstuvwxyz.,!? " #Random message to send
+conn.send(done)
 
 conn.close()
