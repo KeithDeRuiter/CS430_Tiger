@@ -50,10 +50,9 @@ while(True):
 		break
 
 	elif(ciphertype == "d"):
-		blocklen = input("How long of a block: ")
-		choice = "d " + str(blocklen)
+		choice = "d " + str(4)
 		conn.send(choice)
-		crypt = Polygram(blocklen)
+		crypt = Polygram()
 		break
 
 	else:
