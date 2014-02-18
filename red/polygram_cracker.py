@@ -1,5 +1,6 @@
 import sys
 import random
+from word_checker import WordChecker
 
 text_list = []
 mapped_list = []
@@ -43,11 +44,12 @@ mapped_list = []
 
 text_list = generate_text_blocks()
 mapped_list = generate_text_blocks()
-print text_list
-print mapped_list
+#print text_list
+#print mapped_list
 go_on = True
 
 ciphertext = read_ciphertext()
+checker = WordChecker()
 
 while go_on:
     message = ''
@@ -65,4 +67,14 @@ while go_on:
         message_snip = mapped_list[index]
         message = message + message_snip
     
+    sp = message.split(' ')
+    
+    word_match = True
+    for s in sp:
+        if not checker.is_word(s):
+            word_match = False
+    if word_match:
+        print message
+        print mapped_list
+        go_on = False
     print message
