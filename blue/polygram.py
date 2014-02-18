@@ -5,11 +5,10 @@ import sys
 class Polygram:
 	DIC = []
 	SCRAMBLE = []
-	CIPHERLEN = 1
+	CIPHERLEN = 4
 
-	def __init__(self, blocklen):
+	def __init__(self):
 		global CIPHERLEN, DIC, SCRAMBLE
-		CIPHERLEN = blocklen
 		DIC = [''.join(i) for i in itertools.product("abcdefghijklmnopqrstuvwxyz.,!? ", repeat=CIPHERLEN)]
 		SCRAMBLE = []
 		SCRAMBLE.extend(DIC)
@@ -27,7 +26,7 @@ class Polygram:
 		#Make sure last block is 3 length or append spaces to make it so
 		if(len(message[-1]) == 1):
 			message[-1] = message[-1] + "  "
-		else if( len(message[-1]) == 2)
+		elif( len(message[-1]) == 2):
 			message[-1] = message[-1] + " "
 
 		#Encrypt each block
@@ -45,7 +44,7 @@ class Polygram:
 
 		#Decrypt each block
 		messageDecrypt = ""
-		for(i in range(len(message))):
+		for i in range(len(message)):
 			LOC = SCRAMBLE.index(CHUNK)
 			messageDecrypt += DIC[LOC]
 

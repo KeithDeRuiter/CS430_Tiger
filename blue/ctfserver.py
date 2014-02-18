@@ -35,27 +35,27 @@ while(true):
 		crypt = Alphabetic(1)
 		break
 
-	else if(ciphertype == "b"):
+	elif(ciphertype == "b"):
 		maplen = input("How many maps to use: ")
 		choice = "b " + maplen
 		conn.send(choice)
 		crypt = Alphabetic(maplen)
 		break
 
-	else if(ciphertype == "c"):
+	elif(ciphertype == "c"):
 		choice = "c"
 		conn.send(choice)
 		crypt = Homophonic()
 		break
 
-	else if(ciphertype == "d"):
+	elif(ciphertype == "d"):
 		blocklen = input("How long of a block: ")
 		choice = "d " + blocklen
 		conn.send(choice)
 		crypt = Polygram(blocklen)
 		break
 
-	else
+	else:
 		print("Not a valid choice. ")
 
 count = 0

@@ -13,7 +13,8 @@ freq_string = "etaoinshrdlcumwfgypbvkjxqz"
 key = {}
 
 for letter in cipher:
-	if not key.has_key(letter):
+	# if not key.has_key(letter):
+	if not letter in key:
 		key[letter] = '?'
 key.pop(' ')
 
