@@ -21,15 +21,19 @@ class Homophonic:
 		message = ""
 		#encrypts the message by converting each character to some 4 digit number
 		for letter in thing:
+		        if(letter=='\n'):
+			  continue
 			message = message + str(self.homophonic[self.alphabet.index(letter)*100+count])
 			count = count+1
+		print(message)
 		return message
 
 	def decrypt(self, thing):
 		#global alphabet
 		message = ""
 		#decrypts by seeing what 4 digit number maps to what character
-		for x in xrange(0, len(message)/4):
+		for x in xrange(0, len(thing)/4): 
 			temp = thing[x*4:x*4+4]	
-			message = message + self.alphabet[(thing.index(int(temp))/100)]
-		return message
+			message = message + self.alphabet[(self.homophonic.index(int(temp))/100)]
+		print(str(message))
+		return str(message)
