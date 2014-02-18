@@ -2,9 +2,9 @@ from socket import *      #import the socket library
 import os.path
 import time
 
-import polygram
-import homo
-import cipher
+from homo import Homophonic
+from polygram import Polygram
+from cipher import Alphabetic
 
 HOST = ""   #we are the host
 PORT = 16003    #arbitrary port not currently in use
@@ -26,9 +26,10 @@ print ("...connected!")
 
 
 #Setup which cipher type and additional info needed
-while(true):
+while(True):
 	#Choose cipher type
-	ciphertype = input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram :")
+	ciphertype = raw_input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram : ")
+	print(ciphertype)
 	if(ciphertype == "a"):
 		choice = "a"
 		conn.send(choice)
@@ -50,7 +51,7 @@ while(true):
 
 	elif(ciphertype == "d"):
 		blocklen = input("How long of a block: ")
-		choice = "d " + blocklen
+		choice = "d " + str(blocklen)
 		conn.send(choice)
 		crypt = Polygram(blocklen)
 		break
