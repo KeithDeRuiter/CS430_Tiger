@@ -1,10 +1,25 @@
 import nfqueue
 
 q = None
+seq = 0
 
 def cb(dummy, payload):
     #callback
-    print payload
+    data = payload.get_data()
+
+    print '--------'
+    print data
+    print '--------'
+    
+    filename = 'message_' + seq + '.txt'
+    seq = seq + 1
+    f = open(filename, 'w')
+    for x in data:
+        f.write(x)
+        print x
+    f.close()
+
+
 
 
 q = nfqueue.queue()
