@@ -9,7 +9,7 @@ class Alphabetic:
 	times = 1
 
 	def __init__(self, MAPS):
-		global alphabet, keyList, 
+		global alphabet, keyList
 		random.seed(10)
 		times = MAPS #Number of times to map the cipher
 		#this copies the alphabet and then shuffles it 100 times for 100 keys
