@@ -7,7 +7,7 @@ from polygram import Polygram
 from cipher import Alphabetic
 
 HOST = ""   #we are the host
-PORT = 16005   #arbitrary port not currently in use
+PORT = 16002   #arbitrary port not currently in use
 ADDR = (HOST,PORT)    #we need a tuple for the address
 BUFSIZE = 4096    #reasonably sized buffer for data
 ## now we create a new socket object (serv)
@@ -53,7 +53,7 @@ while(True):
 		blocklen = input("How long of a block: ")
 		choice = "d " + str(blocklen)
 		conn.send(choice)
-		crypt = Polygram(blocklen)
+		crypt = Polygram()
 		break
 
 	else:
