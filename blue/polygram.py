@@ -48,5 +48,7 @@ class Polygram:
 			LOC = SCRAMBLE.index(CHUNK)
 			messageDecrypt += DIC[LOC]
 
+		#Remove any extra spaces at end that were added for padding
+		messageDecrypt = messageDecrypt.strip()
 		#Return full message
 		return messageDecrypt
