@@ -7,7 +7,7 @@ from polygram import Polygram
 from cipher import Alphabetic
 
 HOST = ""   #we are the host
-PORT = 16003    #arbitrary port not currently in use
+PORT = 16008    #arbitrary port not currently in use
 ADDR = (HOST,PORT)    #we need a tuple for the address
 BUFSIZE = 4096    #reasonably sized buffer for data
 ## now we create a new socket object (serv)
@@ -38,7 +38,7 @@ while(True):
 
 	elif(ciphertype == "b"):
 		maplen = input("How many maps to use: ")
-		choice = "b " + maplen
+		choice = "b " + str(maplen)
 		conn.send(choice)
 		crypt = Alphabetic(maplen)
 		break
@@ -63,11 +63,16 @@ count = 0
 
 with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
 	for line in f:
+		if(str(line)=="\n")
+		  continue
+		count=int(count)
 		count += 1
-		message = crypt.encrypt(str(line))
-		message = count + message
+		message = str(crypt.encrypt(str(line)))
+		if(count<10):
+		  count="0"+str(count)
+		message = str(count) + (message)
 		conn.send(message.encode('utf-8'))
-		time.sleep(60)
+		time.sleep(5)
 
 #Tells receiver that all messages sent?
 done = "bac.,!? " #Random message to send

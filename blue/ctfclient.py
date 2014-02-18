@@ -7,7 +7,7 @@ from cipher import Alphabetic
 
 name="localhost" #Change to client for test on deterlab
 HOST = name
-PORT = 16003
+PORT = 16008
 ADDR = (HOST,PORT)
 BUFSIZE = 4096
 
@@ -41,7 +41,8 @@ while(True):
 
 	#f.write(data+"\n")
 	data = str(data)
-	data = data[1:] #Strip order number from string. Discard it for now?
+	number=data[0:2]
+	data = data[2:] #Strip order number from string. Discard it for now?
 	s = crypt.decrypt(data) #Decrypt the message
 	
 	#Strip spaces from end of message in case of polygram
@@ -49,7 +50,7 @@ while(True):
 		s.strip()	
 
 	#Write decrypted message to log.txt
-	f.write(s + "\n")
+	f.write(str(number)+". "+s + "\n")
 
 cli.close()
 f.close()
