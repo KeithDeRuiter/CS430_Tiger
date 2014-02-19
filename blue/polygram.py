@@ -8,45 +8,44 @@ class Polygram:
 	CIPHERLEN = 4
 
 	def __init__(self):
-		global CIPHERLEN, DIC, SCRAMBLE
-		DIC = [''.join(i) for i in itertools.product("abcdefghijklmnopqrstuvwxyz.,!? ", repeat=CIPHERLEN)]
-		SCRAMBLE = []
-		SCRAMBLE.extend(DIC)
+		self.DIC = [''.join(i) for i in itertools.product("abcdefghijklmnopqrstuvwxyz.,!? ", repeat=self.CIPHERLEN)]
+		self.SCRAMBLE = []
+		self.SCRAMBLE.extend(self.DIC)
 		random.seed(1337)
-		random.shuffle(SCRAMBLE)
+		random.shuffle(self.SCRAMBLE)
 
 	#Function that splits input string into blocks of size SIZE
 	def splitter(self, CHUNK, SIZE):
-		return [CHUNK[i:i+SIZE] for i in range(0, len(str), SIZE)]
+		return [str(CHUNK[i:i+SIZE]) for i in range(0, len(CHUNK), SIZE)]
 
 	def encrypt(self, CHUNK):
+
+		clean = str(CHUNK).rstrip()
 		#Split message into x length blocks
-		message = splitter(CHUNK, CIPHERLEN)
+		message = self.splitter(clean, self.CIPHERLEN)
 
 		#Make sure last block is 3 length or append spaces to make it so
-		if(len(message[-1]) == 1):
-			message[-1] = message[-1] + "  "
-		elif( len(message[-1]) == 2):
+		while(len(message[-1]) < self.CIPHERLEN):
 			message[-1] = message[-1] + " "
 
 		#Encrypt each block
 		messageCrypt = ""
 		for i in range(len(message)):
-			LOC = DIC.index(message[i])
-			messageCrypt += SCRAMBLE[LOC]
+			LOC = self.DIC.index(message[i])
+			messageCrypt += self.SCRAMBLE[LOC]
 
 		#Return full message
 		return messageCrypt 
 
 	def decrypt(self, CHUNK):
 		#Split message into x length blocks
-		message = splitter(CHUNK, CIPHERLEN)
+		message = self.splitter(CHUNK, self.CIPHERLEN)
 
 		#Decrypt each block
 		messageDecrypt = ""
 		for i in range(len(message)):
-			LOC = SCRAMBLE.index(CHUNK)
-			messageDecrypt += DIC[LOC]
+			LOC = self.SCRAMBLE.index(message[i])
+			messageDecrypt += self.DIC[LOC]
 
 		#Remove any extra spaces at end that were added for padding
 		messageDecrypt = messageDecrypt.strip()
