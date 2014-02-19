@@ -5,9 +5,9 @@ from homo import Homophonic
 from polygram import Polygram
 from cipher import Alphabetic
 
-name="client" #Change to client for test on deterlab
+name="localhost" #Change to client for test on deterlab
 HOST = name
-PORT = 16005
+PORT = 16001
 ADDR = (HOST,PORT)
 BUFSIZE = 4096
 

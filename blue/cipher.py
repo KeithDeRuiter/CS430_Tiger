@@ -43,6 +43,5 @@ class Alphabetic:
 			  continue
 			decrypted+=self.alphabet[self.keyList[t].index(letter)]
 			t = (t + 1)%self.times
-			print (self.times)
 		print(decrypted)
 		return decrypted
