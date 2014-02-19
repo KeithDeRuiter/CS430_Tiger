@@ -9,7 +9,7 @@ class Alphabetic:
 	times = 0
 
 	def __init__(self, MAPS):
-		self.alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','!','?']
+		self.alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ',',','.','!','?']
 		random.seed(10)
 		self.keyList=[]
 		self.times = MAPS #Number of times to map the cipher
