@@ -9,7 +9,6 @@ class Alphabetic:
 	times = 0
 
 	def __init__(self, MAPS):
-		#global alphabet, keyList
 		self.alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','!','?']
 		random.seed(10)
 		self.keyList=[]
@@ -21,7 +20,6 @@ class Alphabetic:
 			random.shuffle(self.keyList[x])
 
 	def encrypt(self, thing):
-		#global alphabet, keyList, times
 		message = str(thing)
 		encrypted = ""
 		t = 0
@@ -35,7 +33,6 @@ class Alphabetic:
 		return encrypted
 
 	def decrypt(self, thing):
-		#global alphabet, keyList, times
 		decrypted = ""
 		t = 0
 		for letter in thing:

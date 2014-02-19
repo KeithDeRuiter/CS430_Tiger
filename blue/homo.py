@@ -7,7 +7,6 @@ class Homophonic:
 	homophonic = []
 
 	def __init__(self):
-		#global homophonic
 		self.alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','!','?']
 		self.homophonic=[]
 		#list used to encrypt and decrypt, each character maps to 100 different numbers
@@ -16,7 +15,6 @@ class Homophonic:
 		random.shuffle(self.homophonic)
 
 	def encrypt(self, thing):
-		#global alphabet, homophonic
 		count = 0
 		message = ""
 		#encrypts the message by converting each character to some 4 digit number
@@ -29,7 +27,6 @@ class Homophonic:
 		return message
 
 	def decrypt(self, thing):
-		#global alphabet
 		message = ""
 		#decrypts by seeing what 4 digit number maps to what character
 		for x in xrange(0, len(thing)/4): 

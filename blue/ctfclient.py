@@ -7,7 +7,7 @@ from cipher import Alphabetic
 
 name="localhost" #Change to client for test on deterlab
 HOST = name
-PORT = 16001
+PORT = 16007
 ADDR = (HOST,PORT)
 BUFSIZE = 4096
 

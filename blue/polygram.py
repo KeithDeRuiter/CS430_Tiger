@@ -35,6 +35,7 @@ class Polygram:
 			messageCrypt += self.SCRAMBLE[LOC]
 
 		#Return full message
+		print(messageCrypt)
 		return messageCrypt 
 
 	def decrypt(self, CHUNK):
@@ -50,4 +51,5 @@ class Polygram:
 		#Remove any extra spaces at end that were added for padding
 		messageDecrypt = messageDecrypt.strip()
 		#Return full message
+		print(messageDecrypt)
 		return messageDecrypt
