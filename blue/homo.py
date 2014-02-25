@@ -24,6 +24,7 @@ class Homophonic:
 			message = message + str(self.homophonic[self.alphabet.index(letter)*100+count])
 			count = count+1
 		print(message)
+		random.shuffle(self.homophonic)
 		return message
 
 	def decrypt(self, thing):
@@ -33,4 +34,5 @@ class Homophonic:
 			temp = thing[x*4:x*4+4]	
 			message = message + self.alphabet[(self.homophonic.index(int(temp))/100)]
 		print(str(message))
+		random.shuffle(self.homophonic)
 		return str(message)

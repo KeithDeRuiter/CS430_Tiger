@@ -30,6 +30,7 @@ class Alphabetic:
 			encrypted+=(self.keyList[t][self.alphabet.index(letter)])
 			t = (t + 1)%self.times
 		print(encrypted)
+		random.shuffle(self.keyList)
 		return encrypted
 
 	def decrypt(self, thing):
@@ -41,4 +42,5 @@ class Alphabetic:
 			decrypted+=self.alphabet[self.keyList[t].index(letter)]
 			t = (t + 1)%self.times
 		print(decrypted)
+		random.shuffle(self.keyList)
 		return decrypted
