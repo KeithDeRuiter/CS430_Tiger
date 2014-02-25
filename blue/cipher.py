@@ -10,7 +10,7 @@ class Alphabetic:
 
 	def __init__(self, MAPS):
 		self.alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ',',','.','!','?']
-		random.seed(10)
+		random.seed("CTFTIGERFTW")
 		self.keyList=[]
 		self.times = MAPS #Number of times to map the cipher
 		#this copies the alphabet and then shuffles it 100 times for 100 keys

@@ -11,7 +11,7 @@ class Homophonic:
 		self.homophonic=[]
 		#list used to encrypt and decrypt, each character maps to 100 different numbers
 		self.homophonic = list(range(1000, 10000))
-		random.seed(10)
+		random.seed("CTFTIGERFTW")
 		random.shuffle(self.homophonic)
 
 	def encrypt(self, thing):
