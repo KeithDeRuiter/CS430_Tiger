@@ -1,12 +1,15 @@
 from collections import deque
 import string
-
+import sys
 
 
 with open(sys.argv[1]) as msg_file:
 	messages = msg_file.read()
 
+
 messages = messages.lower().replace(" ", "");
+
+print messages
 
 dict = [line.rstrip() for line in open('words.txt')]
 
