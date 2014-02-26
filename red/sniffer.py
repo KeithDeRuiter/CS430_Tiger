@@ -1,5 +1,6 @@
 import nfqueue
 import mono
+from dpkt import ip, tcp
 
 q = None
 seq = 0
@@ -8,18 +9,23 @@ def cb(dummy, payload):
     #callback
 
     data = payload.get_data()
+    pkt = ip.IP(data)
+    packetData = pkt.tcp.data
 
-    print '--------'
-    print data
-    print '--------'
-    
-    filename = 'message_' + seq + '.txt'
-    seq = seq + 1
-    f = open(filename, 'w')
-    for x in data:
-        f.write(x)
-        print x
-    f.close()
+
+    #print '--------'
+    #print data
+    #print '--------'
+
+    if len(packetData) > 0:
+        filename = 'message_' + str(seq) + '.txt'
+        seq = seq + 1
+        f = open(filename, 'w')
+        f.write(packetData)
+        print packetData
+        f.close()
+
+    payload.set_verdict(nfqueue.NF_ACCEPT)
 
     
 
