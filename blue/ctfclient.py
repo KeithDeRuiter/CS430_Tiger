@@ -5,7 +5,7 @@ from homo import Homophonic
 from polygram import Polygram
 from cipher import Alphabetic
 
-name="localhost" #Change to client for test on deterlab
+name="server" #Change to client for test on deterlab
 HOST = name
 PORT = 16007
 ADDR = (HOST,PORT)
