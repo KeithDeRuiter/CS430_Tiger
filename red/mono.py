@@ -37,18 +37,32 @@ with open('pattern_dict.txt') as pattern_file:
 			else:
 				pattern_dict[cur_pattern] |= {line}
 
-print sys.argv[1]
+message = 'THERE IS NOTHING THAT I WANT MORE THAN TO GO TO $NIVERSITY AND BECOME A PROFESSOR I WILL GO TO THE BOOKSTORE AND P$RCHASE A TON OF BOOKS.'.lower()
+
+#with open(sys.argv[1]) as msg_file:
+#	message  = msg_file.read()
+
+count = 'A'
+
+new_message = message
+
+for c in message:
+
+	if c in ',.?!abcdefghijklmnopqrstuvwxyz':
+		continue
 
 
-message = 'WQZBWCZVXYQTZJZRCAEXCSZCUZWXTIZEX,QZJSPZEJNQSEZECZJSZXSYQTEXVJEXCSZCUZ,JEWQ,JEXOJNZEALEWIZBXNNZOC,QZECZJNNZCEWQAZMLQTEXCSTZBXEWZJZPQOXPQPZJPYJSEJVQ.'.lower()
+	for d in ',.?!abcdefghijklmnopqrstuvwxyz':
+		if not d in new_message:
+			new_message = new_message.replace(c, d)
+			break
 
-with open(sys.argv[1]) as msg_file:
-	message  = msg_file.read()
+message = new_message
 
 # find the space character
 # the character with the least likely value is probably the space
 most_likely = 99999
-for c in ',.?!abcdefghijklmnopqrstuvwxyz ':
+for c in ',.?!abcdefghijklmnopqrstuvwxyz':
 	test_words = message.split(c)
 	likely = 0
 	for tw in test_words:
@@ -70,12 +84,14 @@ punct = set()
 punct.add(message[-1])
 for c in ',.?! abcdefghijklmnopqrstuvwxyz':
 	is_punct = True
-	if c not in message.replace(message[-1], ''):
+	#if c not in message.replace(message[-1], ''):
+	if c not in message:
 		is_punct = False
 		continue
 	test_words = message.split(space_char)
 	for tw in test_words:
 		if c in tw[:-1] or c == tw:
+		#if c == tw:
 			is_punct = False
 			continue
 	if is_punct:
@@ -85,11 +101,15 @@ if space_char in punct:
 	punct.remove(space_char)
 
 new_ciphers = []
+
+for ss in subsets(punct):
+	print ss
+
 for p_set in subsets(punct):
 	if len(p_set) > 4:
 		continue
-	if not message[-1] in p_set:
-		continue
+	#if not message[-1] in p_set:
+	# 	continue
 	new_cipher = message.replace(space_char, '-')
 	for p in p_set:
 		new_cipher = new_cipher.replace(p, '')
