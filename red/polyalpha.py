@@ -12,6 +12,7 @@ def chunks(s, n):
 
 # for chunk in chunks(messages, 4):
 #     print chunk
+f = open('polyAlphabeticoutput.txt','w')
 
 
 for i in range(97, 128):
@@ -23,8 +24,9 @@ for i in range(97, 128):
 					for word in dict:
 						if a in word:
 							print a
+							f.write(a);
 							print chr(i)+chr(j)+chr(k)+chr(x)
-
+							f.write(chr(i)+chr(j)+chr(k)+chr(x))
 
 
 
