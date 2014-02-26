@@ -1,7 +1,11 @@
 from collections import deque
 import string
 
-messages = 'Lknu hdlg av kqj drwkhrgfw';
+
+
+with open(sys.argv[1]) as msg_file:
+	messages = msg_file.read()
+
 messages = messages.lower().replace(" ", "");
 
 dict = [line.rstrip() for line in open('words.txt')]
