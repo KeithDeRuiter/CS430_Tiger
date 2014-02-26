@@ -2,12 +2,12 @@ from socket import *      #import the socket library
 import os.path
 import time
 
-import polygram
-import homo
-import cipher
+from homo import Homophonic
+from polygram import Polygram
+from cipher import Alphabetic
 
 HOST = ""   #we are the host
-PORT = 16003    #arbitrary port not currently in use
+PORT = 16007   #arbitrary port not currently in use
 ADDR = (HOST,PORT)    #we need a tuple for the address
 BUFSIZE = 4096    #reasonably sized buffer for data
 ## now we create a new socket object (serv)
@@ -26,9 +26,10 @@ print ("...connected!")
 
 
 #Setup which cipher type and additional info needed
-while(true):
+while(True):
 	#Choose cipher type
-	ciphertype = input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram :")
+	ciphertype = raw_input("Select cipher letter choice: a) monoalphabetic, b) polyalphabetic, c) homophonic, d) polygram : ")
+	print(ciphertype)
 	if(ciphertype == "a"):
 		choice = "a"
 		conn.send(choice)
@@ -37,7 +38,7 @@ while(true):
 
 	elif(ciphertype == "b"):
 		maplen = input("How many maps to use: ")
-		choice = "b " + maplen
+		choice = "b " + str(maplen)
 		conn.send(choice)
 		crypt = Alphabetic(maplen)
 		break
@@ -49,10 +50,9 @@ while(true):
 		break
 
 	elif(ciphertype == "d"):
-		blocklen = input("How long of a block: ")
-		choice = "d " + blocklen
+		choice = "d " + str(4)
 		conn.send(choice)
-		crypt = Polygram(blocklen)
+		crypt = Polygram()
 		break
 
 	else:
@@ -60,13 +60,20 @@ while(true):
 
 count = 0
 
-with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
+with open("messages1.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
 	for line in f:
+		if(str(line) =="\n"):
+			continue
+		if(str(line)=="\r\n"):
+			continue
+		count=int(count)
 		count += 1
-		message = crypt.encrypt(str(line))
-		message = count + message
+		message = str(crypt.encrypt(str(line)))
+		if(count<10):
+			count="0"+str(count)
+		message = str(count) + (message)
 		conn.send(message.encode('utf-8'))
-		time.sleep(60)
+		time.sleep(5)
 
 #Tells receiver that all messages sent?
 done = "bac.,!? " #Random message to send
