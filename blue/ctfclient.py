@@ -31,7 +31,7 @@ elif(dataSplit[0] == "d"):
 	crypt = Polygram()
 
 #Begin receiving file, decrypting, and logging
-f = file("log.txt","w+")
+f = file("messages.txt","w+")
 
 while(True):
 	data = cli.recv(BUFSIZE) #Receive the message from server

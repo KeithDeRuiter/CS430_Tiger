@@ -60,7 +60,7 @@ while(True):
 
 count = 0
 
-with open("messages.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
+with open("messages1.txt") as f: #Opens file and goes through every line. Appends not encrypted count to keep track.
 	for line in f:
 		if(str(line) =="\n"):
 			continue
